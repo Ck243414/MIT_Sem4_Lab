@@ -1,0 +1,131 @@
+create table PERSON(driver_id# varchar(30), name varchar(50), address varchar(100), primary key(driver_id#));
+
+create table CAR(
+  2  regno varchar(20),
+  3  model varchar(30),
+  4  Year int,
+  5  primary key(regno));
+
+ create table ACCIDENT(
+  2  report_number int,
+  3  accd_date date,
+  4  location varchar(50),
+  5  primary key(report_number));
+
+ create table OWNS(
+  2  driver_id# varchar(30),
+  3  regno varchar(20),
+  4  primary key(driver_id#,regno),
+  5  foreign key (driver_id#) references PERSON,
+  6  foreign key (regno) references CAR);
+
+ create table PARTICIPATED(
+  2  driver_id# varchar(30),
+  3  regno varchar(20),
+  4  report_number int,
+  5  damage_amount int,
+  6  primary key (driver_id#,regno,report_number),
+  7  foreign key (driver_id#) references PERSON,
+  8  foreign key (regno) references CAR,
+  9  foreign key (report_number) references ACCIDENT);
+
+ insert into PERSON
+  2  values ('14082004','Shubhangi Shree','Gurgaon');
+
+insert into PERSON
+  2  values ('24032004','Chaitanya Kannan','New Delhi');
+
+ insert into PERSON
+  2  values ('14012005','Udai Pratap Singh','Gurgaon');
+
+ insert into PERSON
+  2  values ('17012004','Arhaan Girdhar','Noida');
+
+ insert into PERSON
+  2  values ('24042004','Saivya Singh','Kolkata');
+
+ alter table PERSON modify driver_id# varchar(20);
+
+ alter table PERSON modify name varchar(20);
+
+ alter table PERSON modify address varchar(20);
+
+ select * from PERSON;
+
+ insert into CAR
+  2  values ('HR01AB1616','Suzuki Baleno',2019);
+ insert into CAR
+  2  values ('DL1CD8193','Honda Amaze',2018);
+ insert into CAR
+  2  values ('DL2CD3452','Hyundai i20',2015);
+ insert into CAR
+  2  values ('UP1DC5647','BMW X7',2019);
+ insert into CAR
+  2  values ('HR4W2453','Toyota Fortuner',2022);
+ 
+select * from CAR;
+
+
+ insert into ACCIDENT
+  2  values (12,'02-Jan-2024','DLF Phase-1');
+ insert into ACCIDENT
+  2  values (15,'25-Dec-2023','Vasant Kunj');
+ insert into ACCIDENT
+  2  values (20,'24-April-2022','Saket');
+ insert into ACCIDENT
+  2  values (18,'18-Mar-2020','Sector-42');
+ insert into ACCIDENT
+  2  values (17,'13-Nov-2021','Manipal');
+ select * from ACCIDENT;
+
+ insert into OWNS
+  2  values ('14082004','HR01AB1616');
+ insert into OWNS
+  2  values ('24032004','DL1CD8193');
+ insert into OWNS
+  2  values ('14012005','DL2CD3452');
+ insert into OWNS
+  2  values ('17012004','UP1DC5647');
+ insert into OWNS
+  2  values ('24042004','HR4W2453');
+ select * from OWNS;
+
+ insert into PARTICIPATED
+  2  values ('14082004','HR01AB1616',12,15000);
+ insert into PARTICIPATED
+  2  values ('24032004','DL1CD8193',15,500);
+ insert into PARTICIPATED
+  2  values ('14012005','DL2CD3452',20,2000);
+ insert into PARTICIPATED
+  2  values ('17012004','UP1DC5647',18,20000);
+ insert into PARTICIPATED
+  2  values ('24042004','HR4W2453',17,1000);
+ select * from PARTICIPATED;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
